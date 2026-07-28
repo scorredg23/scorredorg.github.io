@@ -177,8 +177,8 @@
 
   /* ===== hero ===== */
   .hero{position:relative; min-height:100vh; display:flex; align-items:center; justify-content:center; overflow:hidden; padding-top:80px;}
-  .hero-bg{position:absolute; inset:0; z-index:0;}
-  .hero-bg svg{position:absolute; bottom:0; width:100%; height:auto;}
+  .hero-bg{position:absolute; inset:0; z-index:0; overflow:hidden;}
+  .hero-bg svg{position:absolute; left:0; right:0; bottom:0; width:100%; height:auto; display:block;}
   .hero-glow{
     position:absolute; top:8%; left:50%; transform:translateX(-50%);
     width:520px; height:520px; border-radius:50%;
@@ -208,11 +208,14 @@
   @keyframes rise{ from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
 
   .scroll-cue{
-    position:absolute; bottom:30px; left:50%; transform:translateX(-50%); z-index:5;
+    position:absolute; bottom:36px; left:50%; transform:translateX(-50%); z-index:5;
     display:flex; flex-direction:column; align-items:center; gap:10px;
     opacity:0; animation:rise 1.2s var(--ease) forwards 1.5s;
   }
-  
+  .scroll-cue .line{width:1px; height:44px; background:linear-gradient(var(--coffee), transparent); animation:pulse 2.4s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:.3;} 50%{opacity:1;}}
+  .scroll-cue span{font-size:10px; letter-spacing:.28em; text-transform:uppercase; color:var(--coffee);}
+
   /* ===== reveal ===== */
   .reveal{opacity:0; transform:translateY(26px); transition:opacity .9s var(--ease), transform .9s var(--ease);}
   .reveal.in{opacity:1; transform:translateY(0);}
@@ -465,17 +468,7 @@
     <a href="#perfil">El café</a>
     <a href="#contacto" class="nav-cta">Contacto</a>
   </nav>
-  <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false"><span></span></button>
 </header>
-
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#territorio">Nuestro origen</a>
-  <a href="#finca">La finca</a>
-  <a href="#proceso">Proceso</a>
-  <a href="#galeria">Galería</a>
-  <a href="#perfil">El café</a>
-  <a href="#contacto">Contacto</a>
-</div>
 
 <!-- ============ NAV DE CAPÍTULOS ============ -->
 <nav class="chapter-nav" aria-label="Ir a capítulo">
@@ -508,7 +501,7 @@
       <span class="hero-badge glass">Paisaje Cultural Cafetero</span>
     </div>
   </div>
-  <div class="scroll-cue"><div class="line"></div><span></span></div>
+  <div class="scroll-cue"><div class="line"></div><span>Descender</span></div>
 </div>
 
 <!-- ============ TERRITORIO ============ -->
@@ -858,3 +851,4 @@
 
 </body>
 </html>
+
