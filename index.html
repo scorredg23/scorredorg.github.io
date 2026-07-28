@@ -740,20 +740,6 @@
   const nav = document.getElementById('siteNav');
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40), { passive:true });
 
-  /* ===== menú móvil ===== */
-  const navToggle = document.getElementById('navToggle');
-  const mobileMenu = document.getElementById('mobileMenu');
-  navToggle.addEventListener('click', () => {
-    const open = mobileMenu.classList.toggle('open');
-    navToggle.classList.toggle('open', open);
-    navToggle.setAttribute('aria-expanded', open);
-  });
-  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    mobileMenu.classList.remove('open');
-    navToggle.classList.remove('open');
-    navToggle.setAttribute('aria-expanded', false);
-  }));
-
   /* ===== capítulo activo ===== */
   const chapters = document.querySelectorAll('#top, section, footer');
   const dots = document.querySelectorAll('.chapter-nav a');
@@ -851,4 +837,3 @@
 
 </body>
 </html>
-
