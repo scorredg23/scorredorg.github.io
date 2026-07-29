@@ -61,28 +61,20 @@
   h1,h2,h3{font-family:var(--serif); font-weight:400; letter-spacing:-.01em; color:var(--black);}
 
   /* ===== Liquid glass base ===== */
-  .glass {
-     position: relative;
-
-    background: linear-gradient(
-        155deg,
-        rgba(255,255,255,.22),
-        rgba(255,255,255,.08) 55%,
-        rgba(255,255,255,.15)
-    );
-
-    backdrop-filter: blur(14px) saturate(130%);
-    -webkit-backdrop-filter: blur(14px) saturate(130%);
-
-    border: 1px solid rgba(255,255,255,.28);
-
+  .glass{
+    position:relative;
+    background:linear-gradient(155deg, rgba(255,255,255,.5), rgba(255,255,255,.14) 55%, rgba(255,255,255,.32));
+    backdrop-filter:blur(34px) saturate(220%);
+    -webkit-backdrop-filter:blur(34px) saturate(220%);
+    border:1px solid rgba(255,255,255,.75);
     box-shadow:
-        0 8px 20px rgba(0,0,0,.06),
-        inset 0 1px 0 rgba(255,255,255,.35);
-
-    isolation: isolate;
-    overflow: hidden;
-}
+      0 24px 54px -18px rgba(122,86,60,.4),
+      0 2px 8px rgba(122,86,60,.12),
+      inset 0 1px 0 rgba(255,255,255,.95),
+      inset 0 -12px 30px -18px rgba(122,86,60,.25);
+    isolation:isolate;
+    overflow:hidden;
+  }
   /* brillo/reflejo de cristal en el borde superior */
   .glass::before{
     content:"";
@@ -92,14 +84,12 @@
   }
   /* franja especular fina, como el filo de un vidrio pulido */
   .glass::after{
-    content:"";
-    position:absolute; top:0; left:6%; right:6%; height:1px; z-index:2; pointer-events:none;
-    background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.9), rgba(255,255,255,0));
+    display: none;
   }
   .glass > *{position:relative; z-index:3;}
 
   /* ===== manchas de color de marca detrás del vidrio (dan profundidad y refracción) ===== */
-  .blob{position:absolute; border-radius:50%; filter:blur(40px); z-index:0; pointer-events:none;}
+  .blob{position:absolute; border-radius:50%; filter:blur(60px); z-index:0; pointer-events:none;}
   section{isolation:isolate;}
 
   /* ===== nav ===== */
