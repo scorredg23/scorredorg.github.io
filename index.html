@@ -33,9 +33,6 @@
     html{scroll-behavior:auto; scroll-snap-type:none;}
     *{animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important;}
   }
-  @media (max-width:860px){
-    html{scroll-snap-type:none;} /* en móvil el snap estorba más de lo que ayuda */
-  }
 
   body{
     background:var(--ivory);
@@ -468,7 +465,18 @@
     <a href="#perfil">Calidad</a>
     <a href="#contacto" class="nav-cta">Contacto</a>
   </nav>
+  <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false"><span></span></button>
 </header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#top">Inicio</a>
+  <a href="#territorio">Nuestro origen</a>
+  <a href="#finca">Que nos define</a>
+  <a href="#proceso">Proceso</a>
+  <a href="#galeria">Galería</a>
+  <a href="#perfil">Calidad</a>
+  <a href="#contacto">Contacto</a>
+</div>
 
 <!-- ============ NAV DE CAPÍTULOS ============ -->
 <nav class="chapter-nav" aria-label="Ir a capítulo">
@@ -500,11 +508,10 @@
       <span class="hero-badge glass">Programa Nespresso AAA</span>
       <span class="hero-badge glass">Café de especialidad</span>
     </div>
-    </div>
   </div>
   <div class="scroll-cue"><div class="line"></div><span></span></div>
 </div>
-  
+
 <!-- ============ TERRITORIO ============ -->
 <section id="territorio" class="territorio">
   <div class="blob" style="width:480px;height:480px;left:-140px;top:10%;background:radial-gradient(circle, rgba(213,148,58,.5), rgba(213,148,58,0) 70%);" aria-hidden="true"></div>
@@ -741,6 +748,20 @@ Cada taza conserva el origen, la frescura y el trabajo de quienes hacen posible 
 <script>
   const nav = document.getElementById('siteNav');
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40), { passive:true });
+
+  /* ===== menú móvil ===== */
+  const navToggle = document.getElementById('navToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  navToggle.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    navToggle.classList.toggle('open', open);
+    navToggle.setAttribute('aria-expanded', open);
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    navToggle.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', false);
+  }));
 
   /* ===== capítulo activo ===== */
   const chapters = document.querySelectorAll('#top, section, footer');
