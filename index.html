@@ -312,11 +312,17 @@
   @media (max-width:860px){
     .proceso-shots{grid-template-columns:repeat(2, 1fr);}
   }
-  .step{display:grid; grid-template-columns:64px 1fr; gap:6px; align-items:center; padding:26px 26px; border-radius:20px; transition:transform .5s var(--ease);}
+  .step{display:grid; grid-template-columns:64px 1fr; gap:6px; align-items:center; padding:26px 26px; border-radius:20px; transition:transform .5s var(--ease); cursor:pointer;}
   .step:hover{transform:translateX(6px);}
   .step .num{font-family:var(--serif); font-style:italic; font-size:24px; color:var(--terracotta);}
   .step .body h3{font-size:21px; margin-bottom:6px;}
   .step .body p{color:var(--coffee); font-size:15px; max-width:56ch;}
+  .step-view{
+    display:inline-block; margin-top:10px; font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--terracotta); opacity:0; transform:translateY(-2px);
+    transition:opacity .35s var(--ease), transform .35s var(--ease);
+  }
+  .step:hover .step-view, .step:focus-visible .step-view{opacity:1; transform:translateY(0);}
 
   /* ===== perfil / cupping ===== */
   .perfil{background:linear-gradient(180deg, rgba(246,240,226,0), rgba(230,197,156,.35));}
@@ -600,12 +606,12 @@
       <p>Cada cosecha de Café Miraflores sigue un proceso riguroso para preservar la calidad, el aroma y las características que nacen en nuestra finca. Desde la cosecha hasta el tueste, cada etapa tiene un propósito: llevar el verdadero sabor de un café colombiano.</p>
     </div>
     <div class="timeline">
-      <div class="step glass reveal reveal-1"><div class="num">01</div><div class="body"><h3>Cosecha selectiva</h3><p>Solo recolectamos cerezas que alcanzaron su punto óptimo de maduración, ese color rojo intenso que nos gusta. </p></div></div>
-      <div class="step glass reveal reveal-2"><div class="num">02</div><div class="body"><h3>Despulpado</h3><p>La cereza del café pasa por el proceso de despulpe el mismo día de la cosecha, antes de que el calor del día altere el fruto recién recolectado.</p></div></div>
-      <div class="step glass reveal reveal-3"><div class="num">03</div><div class="body"><h3>Fermentación controlada</h3><p>El mucílago se fermenta bajo tiempos y temperaturas, buscando el equilibrio de caracteriza su acidez.</p></div></div>
-      <div class="step glass reveal reveal-4"><div class="num">04</div><div class="body"><h3>Lavado</h3><p>Se lava con agua natural hasta retirar por completo el mucílago fermentado.</p></div></div>
-      <div class="step glass reveal reveal-1"><div class="num">05</div><div class="body"><h3>Secado al sol</h3><p>El grano se seca lentamente al sol, protegido de la lluvia, hasta llegar al porcentaje de humedad que buscamos.</p></div></div>
-      <div class="step glass reveal reveal-2"><div class="num">06</div><div class="body"><h3>Trilla y tueste</h3><p>El tueste medio resalta la dulzura natural, la acidez equilibrada y las notas características de Café Miraflores.</p></div></div>
+      <div class="step glass reveal reveal-1" data-img="images/proceso-cosecha.jpg" data-alt="Cosecha selectiva de café en la finca Miraflores" tabindex="0" role="button" aria-label="Ver foto de cosecha selectiva"><div class="num">01</div><div class="body"><h3>Cosecha selectiva</h3><p>Solo recolectamos cerezas que alcanzaron su punto óptimo de maduración, ese color rojo intenso que nos gusta. </p><span class="step-view">Ver foto ↗</span></div></div>
+      <div class="step glass reveal reveal-2" data-img="images/proceso-despulpado.jpg" data-alt="Despulpado del café en la finca Miraflores" tabindex="0" role="button" aria-label="Ver foto de despulpado"><div class="num">02</div><div class="body"><h3>Despulpado</h3><p>La cereza del café pasa por el proceso de despulpe el mismo día de la cosecha, antes de que el calor del día altere el fruto recién recolectado.</p><span class="step-view">Ver foto ↗</span></div></div>
+      <div class="step glass reveal reveal-3" data-img="images/proceso-fermentacion.jpg" data-alt="Fermentación controlada del café Miraflores" tabindex="0" role="button" aria-label="Ver foto de fermentación"><div class="num">03</div><div class="body"><h3>Fermentación controlada</h3><p>El mucílago se fermenta bajo tiempos y temperaturas, buscando el equilibrio de caracteriza su acidez.</p><span class="step-view">Ver foto ↗</span></div></div>
+      <div class="step glass reveal reveal-4" data-img="images/proceso-lavado.jpg" data-alt="Lavado del café en la finca Miraflores" tabindex="0" role="button" aria-label="Ver foto de lavado"><div class="num">04</div><div class="body"><h3>Lavado</h3><p>Se lava con agua natural hasta retirar por completo el mucílago fermentado.</p><span class="step-view">Ver foto ↗</span></div></div>
+      <div class="step glass reveal reveal-1" data-img="images/proceso-secado.jpg" data-alt="Secado al sol del café Miraflores" tabindex="0" role="button" aria-label="Ver foto de secado"><div class="num">05</div><div class="body"><h3>Secado al sol</h3><p>El grano se seca lentamente al sol, protegido de la lluvia, hasta llegar al porcentaje de humedad que buscamos.</p><span class="step-view">Ver foto ↗</span></div></div>
+      <div class="step glass reveal reveal-2" data-img="images/proceso-tueste.jpg" data-alt="Tueste del café Miraflores" tabindex="0" role="button" aria-label="Ver foto de tueste"><div class="num">06</div><div class="body"><h3>Trilla y tueste</h3><p>El tueste medio resalta la dulzura natural, la acidez equilibrada y las notas características de Café Miraflores.</p><span class="step-view">Ver foto ↗</span></div></div>
     </div>
 
     <!--
@@ -820,7 +826,7 @@ Cada taza conserva el origen, la frescura y el trabajo de quienes hacen posible 
     });
   });
 
-  /* ===== lightbox genérico (galería + fotos del proceso) ===== */
+  /* ===== lightbox genérico (galería + fotos del proceso + pasos) ===== */
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightboxImg');
   const lightboxCap = document.getElementById('lightboxCap');
@@ -829,11 +835,17 @@ Cada taza conserva el origen, la frescura y el trabajo de quienes hacen posible 
 
   function visibleItems(){ return items.filter(it => !it.classList.contains('hidden')); }
 
+  function getImgData(el){
+    const img = el.querySelector('img');
+    if(img) return { src: img.src, alt: img.alt };
+    return { src: el.dataset.img, alt: el.dataset.alt || '' };
+  }
+
   function showAt(){
-    const img = currentList[currentIndex].querySelector('img');
-    lightboxImg.src = img.src;
-    lightboxImg.alt = img.alt;
-    lightboxCap.textContent = img.alt;
+    const data = getImgData(currentList[currentIndex]);
+    lightboxImg.src = data.src;
+    lightboxImg.alt = data.alt;
+    lightboxCap.textContent = data.alt;
   }
   function openLightbox(list, index){
     currentList = list;
@@ -857,6 +869,18 @@ Cada taza conserva el origen, la frescura y el trabajo de quienes hacen posible 
   const procesoShots = Array.from(document.querySelectorAll('.proceso-shot'));
   procesoShots.forEach((it) => {
     it.addEventListener('click', () => openLightbox(procesoShots, procesoShots.indexOf(it)));
+  });
+
+  /* ===== pasos del proceso: clic para ver foto ===== */
+  const processSteps = Array.from(document.querySelectorAll('.step[data-img]'));
+  processSteps.forEach((it) => {
+    it.addEventListener('click', () => openLightbox(processSteps, processSteps.indexOf(it)));
+    it.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        openLightbox(processSteps, processSteps.indexOf(it));
+      }
+    });
   });
 
   document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
